@@ -1,0 +1,30 @@
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Logs and reports
+*.log
+reports/
+test-results/
+
+# Temporary files
+*-tmp.html
+tmp/
+.temp/
+
+# Deployment
+.vercel/
+.netlify/
+dist/

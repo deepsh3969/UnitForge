@@ -1,0 +1,251 @@
+/* =========================================================
+   UnitForge — responsive.css
+   Desktop → laptop → tablet → mobile
+   ========================================================= */
+
+@media (max-width: 1140px) {
+  .app-shell {
+    grid-template-columns: 214px minmax(0, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .header-inner {
+    padding: 10px 20px;
+    gap: 14px;
+  }
+
+  .header-search {
+    max-width: 340px;
+  }
+}
+
+/* ---------- Tablet: sidebar becomes horizontal navigation ---------- */
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .sidebar {
+    position: static;
+    gap: 14px;
+  }
+
+  .sidebar .side-block {
+    padding: 12px 14px;
+  }
+
+  .category-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-btn {
+    width: auto;
+    flex-shrink: 0;
+    min-height: 44px;
+    white-space: nowrap;
+    border-left-width: 1px;
+    border-bottom: 3px solid transparent;
+    border-radius: var(--radius-sm);
+  }
+
+  .cat-btn[aria-current="true"] {
+    border-left-color: var(--border);
+    border-bottom-color: var(--accent);
+  }
+
+  .list-body {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+
+  .list-body .restore-item {
+    width: auto;
+    flex-shrink: 0;
+    min-height: 44px;
+  }
+
+  .list-body .restore-main {
+    min-width: 160px;
+  }
+
+  .list-body .empty-state {
+    width: 100%;
+  }
+
+  .shortcuts-block {
+    display: none;
+  }
+}
+
+/* ---------- Small tablet / large phone ---------- */
+
+@media (max-width: 860px) {
+  .brand-sub {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --header-h: 62px;
+  }
+
+  .header-inner {
+    padding: 8px 14px;
+    gap: 10px;
+  }
+
+  .header-search {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-width: none;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+  }
+
+  body.search-open .header-search {
+    display: flex;
+  }
+
+  .header-search .search-icon {
+    left: 27px;
+  }
+
+  #btn-search-mobile {
+    display: grid;
+  }
+
+  .converter-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .swap-cell {
+    padding-bottom: 0;
+    order: 0;
+  }
+
+  .swap-btn {
+    width: 100%;
+    max-width: 220px;
+    height: 48px;
+    border-radius: var(--radius-pill);
+  }
+
+  .swap-btn:hover,
+  .swap-btn:active {
+    transform: none;
+  }
+
+  .field input[type="text"],
+  .field select {
+    height: 50px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .card-head,
+  .section-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .card-head .btn,
+  .section-head .btn {
+    width: 100%;
+  }
+
+  .result-block {
+    padding: 16px;
+  }
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .result-actions .btn {
+    width: 100%;
+  }
+
+  .quick-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel {
+    width: 100vw;
+    border-left: none;
+  }
+
+  .toast {
+    bottom: 18px;
+    font-size: 0.88rem;
+    padding: 11px 16px;
+  }
+
+  .app-footer {
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-name {
+    font-size: 0.96rem;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+  }
+
+  .header-actions {
+    gap: 2px;
+  }
+
+  .icon-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .result-value {
+    font-size: clamp(1.8rem, 11vw, 2.4rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .header-actions #btn-history {
+    display: none;
+  }
+}

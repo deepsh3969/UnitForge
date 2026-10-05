@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UnitForge — Conversion Test Suite</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 40px auto; max-width: 820px; color: #101728; background: #f5f7fa; }
+    h1 { font-size: 1.5rem; }
+    #summary { font-weight: 800; font-size: 1.1rem; margin: 12px 0 20px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 7px 12px; margin-bottom: 4px; border-radius: 8px; background: #fff; border: 1px solid #e2e7ef; font-size: .92rem; }
+    .pass { color: #15803d; }
+    .fail { color: #b91c1c; font-weight: 700; border-color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <h1>UnitForge conversion test suite</h1>
+  <p id="summary">Running…</p>
+  <ul id="results"></ul>
+
+  <script src="../js/units.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/conversionEngine.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="suite.js"></script>
+  <script src="browser.js"></script>
+</body>
+</html>

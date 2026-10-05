@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UnitForge — Universal Unit Converter</title>
+  <meta name="description" content="A fast, accessible and professional multi-category unit conversion platform built with HTML, CSS and JavaScript.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="author" content="deepsh3969">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UnitForge">
+  <meta property="og:title" content="UnitForge — Universal Unit Converter">
+  <meta property="og:description" content="A fast, accessible and professional multi-category unit conversion platform built with HTML, CSS and JavaScript.">
+  <meta property="og:url" content="https://github.com/deepsh3969/UnitForge">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="UnitForge — Universal Unit Converter">
+  <meta name="twitter:description" content="Convert Anything. Understand Everything. A multi-category unit conversion platform built with vanilla HTML, CSS and JavaScript.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#converter">Skip to converter</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#converter">
+        <span class="brand-mark" aria-hidden="true">UF</span>
+        <span class="brand-text">
+          <span class="brand-name">UNITFORGE</span>
+          <span class="brand-sub">Universal Unit Conversion</span>
+        </span>
+      </a>
+
+      <div class="header-search">
+        <label class="sr-only" for="global-search">Search units and categories</label>
+        <span class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 16.7 16.7"></path></svg>
+        </span>
+        <input id="global-search" type="text" role="combobox" aria-expanded="false" aria-controls="search-results"
+               aria-autocomplete="list" autocomplete="off" spellcheck="false"
+               placeholder="Search units… (press /)" aria-describedby="search-hint">
+        <span id="search-hint" class="sr-only">Results appear below. Use the up and down arrow keys to browse, Enter to select.</span>
+        <div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-search-mobile" class="icon-btn" type="button" aria-label="Search units" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 16.7 16.7"></path></svg>
+        </button>
+        <button id="btn-theme" class="icon-btn theme-btn" type="button" data-effective="light" aria-label="Switch to dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        </button>
+        <button id="btn-history" class="icon-btn" type="button" aria-label="Conversion history" title="Conversion history (H)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        </button>
+        <button id="btn-settings" class="icon-btn" type="button" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.5"></circle><circle cx="15" cy="16" r="2.5"></circle></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Categories and favorites">
+      <nav class="side-block" aria-labelledby="cat-heading">
+        <h2 class="side-title" id="cat-heading">Categories</h2>
+        <ul id="category-list" class="category-list"></ul>
+      </nav>
+
+      <section class="side-block" aria-labelledby="fav-heading">
+        <div class="side-title-row">
+          <h2 class="side-title" id="fav-heading">Favorites</h2>
+          <span class="count-badge" id="favorites-count">0</span>
+        </div>
+        <div id="favorites-body" class="list-body"></div>
+      </section>
+
+      <section class="side-block shortcuts-block" aria-labelledby="keys-heading">
+        <h2 class="side-title" id="keys-heading">Keyboard shortcuts</h2>
+        <ul class="shortcut-list">
+          <li><kbd>/</kbd><span>Focus search</span></li>
+          <li><kbd>S</kbd><span>Swap units</span></li>
+          <li><kbd>C</kbd><span>Focus value</span></li>
+          <li><kbd>H</kbd><span>Open history</span></li>
+          <li><kbd>Esc</kbd><span>Close panel</span></li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="main-col" id="main">
+      <section class="card converter" id="converter" aria-labelledby="converter-title">
+        <div class="card-head">
+          <div>
+            <p class="eyebrow">Converter</p>
+            <h2 id="converter-title"><span id="cat-title">Length</span> converter</h2>
+          </div>
+          <button id="btn-favorite" class="btn btn-ghost" type="button" aria-pressed="false">
+            <span class="star-icon" aria-hidden="true">★</span>
+            <span id="favorite-label">Favorite</span>
+          </button>
+        </div>
+
+        <div class="converter-grid">
+          <div class="field field-value">
+            <label for="value-input">Value</label>
+            <input id="value-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+                   value="100" placeholder="e.g. 100" aria-describedby="value-msg">
+            <p id="value-msg" class="field-msg" role="status"></p>
+          </div>
+
+          <div class="field">
+            <label for="from-unit">From</label>
+            <select id="from-unit"></select>
+          </div>
+
+          <div class="swap-cell">
+            <button id="btn-swap" class="swap-btn" type="button" aria-label="Swap from and to units" title="Swap units (S)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20V5M7 5 4 8M7 5l3 3"></path><path d="M17 4v15M17 19l3-3M17 19l-3-3"></path></svg>
+            </button>
+          </div>
+
+          <div class="field">
+            <label for="to-unit">To</label>
+            <select id="to-unit"></select>
+          </div>
+        </div>
+
+        <div class="result-block">
+          <p class="result-label" id="result-label">Result</p>
+          <p class="result-value" id="result-value" aria-live="polite" aria-atomic="true">
+            <span id="result-number">0.1</span><span class="result-unit" id="result-unit">km</span>
+          </p>
+          <p class="result-sub" id="result-sub">100 Meter = 0.1 Kilometer</p>
+
+          <div class="result-actions">
+            <button id="btn-copy" class="btn btn-primary" type="button">Copy result</button>
+            <button id="btn-formula" class="btn btn-ghost" type="button" aria-expanded="false" aria-controls="formula-box">Show formula</button>
+          </div>
+
+          <div id="formula-box" class="formula-box" hidden></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="quick-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Quick</p>
+            <h2 id="quick-title">Popular conversions</h2>
+          </div>
+        </div>
+        <div id="quick-list" class="quick-grid"></div>
+      </section>
+
+      <section class="card" aria-labelledby="recent-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Recent</p>
+            <h2 id="recent-title">Recent conversions</h2>
+          </div>
+          <button id="btn-clear-recent" class="btn btn-quiet" type="button">Clear</button>
+        </div>
+        <div id="recent-body" class="list-body"></div>
+      </section>
+
+      <footer class="app-footer">
+        <p class="footer-tagline"><strong>UnitForge</strong> — Convert Anything. Understand Everything.</p>
+        <p class="footer-meta">Vanilla HTML, CSS &amp; JavaScript · v1.0.0 · Built by <span>deepsh3969</span></p>
+      </footer>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay" hidden></div>
+
+  <aside id="history-panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="history-panel-title" hidden>
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">History</p>
+        <h2 id="history-panel-title">Conversion history</h2>
+      </div>
+      <button class="icon-btn" type="button" data-close-panel aria-label="Close history panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <div id="history-body" class="list-body"></div>
+    </div>
+    <div class="panel-foot">
+      <button id="btn-clear-history" class="btn btn-quiet" type="button">Clear history</button>
+    </div>
+  </aside>
+
+  <aside id="settings-panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="settings-panel-title" hidden>
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Preferences</p>
+        <h2 id="settings-panel-title">Settings</h2>
+      </div>
+      <button class="icon-btn" type="button" data-close-panel aria-label="Close settings panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+      </button>
+    </div>
+
+    <div class="panel-body">
+      <fieldset class="settings-group">
+        <legend>Theme</legend>
+        <div class="radio-row">
+          <label class="choice"><input type="radio" name="theme" value="system"><span>System</span></label>
+          <label class="choice"><input type="radio" name="theme" value="light"><span>Light</span></label>
+          <label class="choice"><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+        </div>
+      </fieldset>
+
+      <div class="settings-group">
+        <label class="settings-label" for="set-precision">Decimal precision</label>
+        <select id="set-precision">
+          <option value="auto">Auto</option>
+          <option value="2">2 decimals</option>
+          <option value="4">4 decimals</option>
+          <option value="6">6 decimals</option>
+          <option value="8">8 decimals</option>
+        </select>
+        <p class="settings-note">Auto keeps results readable and removes floating point noise.</p>
+      </div>
+
+      <div class="settings-group settings-switch">
+        <label class="settings-label" for="set-animations">Animations</label>
+        <span class="switch">
+          <input type="checkbox" id="set-animations">
+          <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+        </span>
+      </div>
+
+      <div class="settings-group settings-switch">
+        <label class="settings-label" for="set-sound">Sound feedback</label>
+        <span class="switch">
+          <input type="checkbox" id="set-sound">
+          <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+        </span>
+      </div>
+
+      <p class="settings-note" id="storage-note">Preferences are stored locally in your browser.</p>
+    </div>
+
+    <div class="panel-foot">
+      <p class="settings-note">Changes save automatically.</p>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript>
+    <div class="noscript-note">UnitForge needs JavaScript enabled to run conversions in your browser.</div>
+  </noscript>
+
+  <script src="js/units.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/conversionEngine.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

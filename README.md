@@ -5,27 +5,39 @@
 A fast, accessible, multi-category unit conversion platform built with plain
 HTML, CSS and JavaScript - no frameworks, no build step, no dependencies.
 
+## Live demo
+
+**[Open UnitForge](https://unitforge-three.vercel.app)**
+
+- **Live demo:** [https://unitforge-three.vercel.app](https://unitforge-three.vercel.app)
+- **Repository:** [github.com/deepsh3969/UnitForge](https://github.com/deepsh3969/UnitForge)
+- **Latest release:** [v1.0.0](https://github.com/deepsh3969/UnitForge/releases/tag/v1.0.0)
+
+Deployed on Vercel as a fully static site - no build step, no environment
+variables, no server-side runtime.
+
 ---
 
 ## Table of contents
 
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Screenshots](#screenshots)
-4. [Tech stack](#tech-stack)
-5. [Getting started](#getting-started)
-6. [Project structure](#project-structure)
-7. [Categories and units](#categories-and-units)
-8. [Conversion engine](#conversion-engine)
-9. [Keyboard shortcuts](#keyboard-shortcuts)
-10. [Settings and storage](#settings-and-storage)
-11. [Testing](#testing)
-12. [Accessibility](#accessibility)
-13. [Browser support](#browser-support)
-14. [Deployment](#deployment)
-15. [Roadmap](#roadmap)
-16. [Contributing](#contributing)
-17. [License](#license)
+1. [Live demo](#live-demo)
+2. [Overview](#overview)
+3. [Features](#features)
+4. [Screenshots](#screenshots)
+5. [Tech stack](#tech-stack)
+6. [Getting started](#getting-started)
+7. [Project structure](#project-structure)
+8. [Categories and units](#categories-and-units)
+9. [Conversion engine](#conversion-engine)
+10. [Keyboard shortcuts](#keyboard-shortcuts)
+11. [Settings and storage](#settings-and-storage)
+12. [Testing](#testing)
+13. [Accessibility](#accessibility)
+14. [Browser support](#browser-support)
+15. [Deployment](#deployment)
+16. [Roadmap](#roadmap)
+17. [Contributing](#contributing)
+18. [License](#license)
 
 ---
 
@@ -275,12 +287,19 @@ Known limitations:
 
 The site is fully static, so any static host works.
 
-**Vercel**
+**Vercel (production)**
+
+The live site is deployed at [https://unitforge-three.vercel.app](https://unitforge-three.vercel.app)
+under the Vercel project `unitforge`.
 
 ```bash
 npm i -g vercel
-vercel          # accept the defaults, framework preset: Other
+vercel                 # project name: unitforge, framework: Other
+vercel --prod          # promote to production
 ```
+
+Build command and install command are left empty; the output directory is
+the repository root (`.`).
 
 **GitHub Pages**
 
